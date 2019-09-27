@@ -22,6 +22,9 @@ app.use((req, res, next) => {
   next();
 });
 
+// Body parsing
+app.use(express.json());
+
 // API request handling
 
 app.get('/api/getPdf', (req, res) => {
