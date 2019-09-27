@@ -1,10 +1,14 @@
 const express = require('express');
 const morgan = require('morgan');
+const path = require('path');
 
 const app = express();
 
 // Setup logging of the HTTP layer
 app.use(morgan('combined'));
+
+// Serve static files
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // CORS
 app.use((req, res, next) => {
@@ -18,9 +22,10 @@ app.use((req, res, next) => {
   next();
 });
 
+const PORT = process.env.PORT || 8080;
 let server;
 
-function runServer(port=PORT) {
+function runServer(port) {
   server = app.listen(port, () => {
     console.info(`The server started listening at ${PORT}`);
   });
@@ -35,8 +40,6 @@ function stopServer() {
    console.info('The server has shut down.');
   })
 };
-
-const PORT = 8080;
 
 if (require.main === module) {
   runServer(PORT);
