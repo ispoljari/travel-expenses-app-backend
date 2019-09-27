@@ -5,4 +5,5 @@ cache:
     - node_modules
 before_install:
   - cd client
+  - npm install
   - npm run build
