@@ -37,19 +37,31 @@ const PORT = process.env.PORT || 8080;
 let server;
 
 function runServer(port) {
-  server = app.listen(port, () => {
-    console.info(`The server started listening at ${PORT}`);
+  return new Promise((resolve, reject) => {
+    server = app
+      .listen(port, () => {
+        console.info(`The server started listening at ${PORT}`);
+        resolve();
+    })
+      .on('error', err => {
+        console.info(`An error occured while trying to connect to the server.`);
+        reject();
+    });
   });
 };
 
 function stopServer() {
-  server.close(err => {
-   if (err) {
-     console.info(`An error occured while shutting down the server.`);
-   }
-
-   console.info('The server has shut down.');
-  })
+  return new Promise((resolve, reject) => {
+    server.close(err => {
+      if (err) {
+        console.info(`An error occured while shutting down the server.`);
+        reject();
+      }
+    
+      console.info('The server has shut down.');
+      resolve();
+    });
+  });
 };
 
 if (require.main === module) {
