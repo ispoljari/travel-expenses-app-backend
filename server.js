@@ -8,7 +8,7 @@ const app = express();
 app.use(morgan('combined'));
 
 // Serve static files
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'public/build')));
 
 // CORS
 app.use((req, res, next) => {
@@ -21,6 +21,17 @@ app.use((req, res, next) => {
 
   next();
 });
+
+// API request handling
+
+app.get('/api/getPdf', (req, res) => {
+  const dummyList = ["line1", "line2", "line3"];
+  res.json(dummyList);
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + 'public/build/index.html'));
+})
 
 const PORT = process.env.PORT || 8080;
 let server;
