@@ -3,6 +3,7 @@ node_js: node
 cache:
   directories:
     - node_modules
+    - client/node_modules
 before_install:
   - cd client
   - npm install
