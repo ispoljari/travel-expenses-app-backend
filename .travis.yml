@@ -2,14 +2,21 @@ language: node_js
 node_js: node
 cache:
   directories:
-    - node_modules
-    - client/node_modules
+  - node_modules
+  - client/node_modules
 before_install:
-  - cd client
-  - npm install
-  - npm run build
-  - cd ../
-script: 
-  - npm run test
-  - cd client
-  - npm run test
+- cd client
+- npm install
+- npm run build
+- cd ../
+script:
+- npm run test
+- cd client
+- npm run test
+deploy:
+  provider: heroku
+  api_key:
+    secure: NmeOGCLP/2XPYamQp0Jc6eihmK4UzoTIni1/DVmOk7h7oWImaiSkK6nGolB5/3Xxix4aGO5YZ67aI4hzw8TL4e4s5s5Fi9MLe5Jsr0HP7/GvsXRdo2CF9fYqoxtgiPbBsceS5Xml90FjuQo2RRHy5yzVWTLZ0p1oyvDojfOWadJsRuWszcyZBHPHVUVij414v/do2uExHHyRopILACAkzWOLv8ajIQBEWCm3Kh5dcshibCujMJhk0Lwtdd0BONAJJgY/gls3R1etb6/EfF1k7igjqJdB7nhTLrxGPALbgvkw3YRbOwjIJqsUMlv3OThxaEXX/2XjYHropDFfGBfpcdEwAcj8HTjSCQH1upVL3UJ90HHELJeEodew+5C132zj+dMqACnnmoRUK7+FMjdFq7Vtydx6rGpzRMp44gFlcOULkKtOSeZnlK4zm16K4m23STzTPJLgahqEUdh1ktwqovMXNZiupXDP2IgsavJgZQLClrM0N69XyDwn1Mf/N2EfE3iIkwYpdD+clDPjgxMM6ZRbGtExDgQIwtrl832YXymAWkZIO2qsJ92UrHrPZwT13KGSesctveimgUvtybLQp6wh3bz4xOhqS5s9p9b8nBZuDkJrlND4u1RJWsj+IxxK3OKwOKlgnQnSBmY7ZQ4Bf9upKByp9D2dFVB/Z1UuVAk=
+  app: travel-expenses-app-backend
+  on:
+    repo: ispoljari/travel-expenses-app-backend
