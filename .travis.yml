@@ -8,3 +8,7 @@ before_install:
   - cd client
   - npm install
   - npm run build
+  - npm test
+  - cd ../
+  - npm install
+  - npm test
