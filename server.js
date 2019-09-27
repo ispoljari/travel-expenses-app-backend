@@ -36,7 +36,7 @@ app.get('*', (req, res) => {
 const PORT = process.env.PORT || 8080;
 let server;
 
-function runServer(port) {
+function runServer(port=PORT) {
   return new Promise((resolve, reject) => {
     server = app
       .listen(port, () => {
@@ -65,7 +65,7 @@ function stopServer() {
 };
 
 if (require.main === module) {
-  runServer(PORT);
+  runServer();
 };
 
 module.exports = { app, runServer, stopServer };
