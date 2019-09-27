@@ -1,9 +1,10 @@
 {
   "name": "travel-expenses-app-backend",
   "version": "1.0.0",
-  "description": "travel expenses API ",
-  "main": "index.js",
+  "description": "Travel expenses app API ",
+  "main": "server.js",
   "scripts": {
+    "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
