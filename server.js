@@ -30,7 +30,7 @@ app.get('/api/getPdf', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/public/build/index.html'));
+  res.sendFile(path.join(__dirname, '/public/build/', 'index.html'));
 })
 
 const PORT = process.env.PORT || 8080;
