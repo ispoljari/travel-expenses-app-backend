@@ -3,7 +3,6 @@ node_js: node
 cache:
   directories:
     - node_modules
-script:
-  - npm test
+before_install:
   - cd client
   - npm run build
